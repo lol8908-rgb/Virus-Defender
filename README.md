@@ -15,11 +15,46 @@ Ein leistungsstarker und benutzerfreundlicher Antivirus-Scanner für sicheres Co
 
 ## 🔧 Installation & Setup
 
-### Voraussetzungen
-- Python 3.8 oder höher
-- pip (Python Package Manager)
+### Automatisches Setup (Empfohlen) ⭐
 
-### Installation
+Das einfachste - führe einfach ein Setup-Script aus!
+
+**Windows:**
+```bash
+# Lade das Repository herunter oder klone es
+git clone https://github.com/lol8908-rgb/Virus-Defender.git
+cd Virus-Defender
+
+# Starte das Setup (erzeugt eine ausführbare SafeGuard.exe)
+setup_safeguard.bat
+```
+
+**Linux/Mac:**
+```bash
+# Lade das Repository herunter oder klone es
+git clone https://github.com/lol8908-rgb/Virus-Defender.git
+cd Virus-Defender
+
+# Starte das Setup
+chmod +x setup_safeguard.sh
+./setup_safeguard.sh
+```
+
+Das Setup-Script macht alles automatisch:
+1. ✅ Installiert Python-Abhängigkeiten
+2. ✅ Installiert PyInstaller
+3. ✅ Baut die ausführbare Datei
+
+Nach dem Setup findest du:
+- **Windows:** `dist/SafeGuard.exe` - die ausführbare Datei!
+- **Linux/Mac:** `dist/SafeGuard` - die ausführbare Datei!
+
+---
+
+### Manuelle Installation
+
+Falls du das Setup-Script nicht nutzen möchtest:
+
 ```bash
 # Projekt klonen
 git clone https://github.com/lol8908-rgb/Virus-Defender.git
@@ -27,33 +62,82 @@ cd Virus-Defender
 
 # Abhängigkeiten installieren
 pip install -r requirements.txt
+
+# PyInstaller installieren
+pip install pyinstaller
+
+# SafeGuard bauen
+pyinstaller safeguard.spec
 ```
 
 ---
 
-## 🏗️ Bauen mit Python
+🏗️ Bauen mit Python
 
-Das Projekt nutzt ein reines **Python-basiertes Build-System**:
+Das Projekt nutzt **PyInstaller** um eine eigenständige ausführbare Datei zu erstellen.
+
+### Automatischer Build (Empfohlen)
 
 ```bash
-# Standard Build
-python build.py
+# Windows
+setup_safeguard.bat
 
-# Build mit Optimierungen
-python build.py --optimize
-
-# Clean Build
-python build.py --clean
+# Linux/Mac
+./setup_safeguard.sh
 ```
 
-### Build-Optionen
-- `--optimize`: Erstellt eine optimierte Version
-- `--clean`: Entfernt vorherige Build-Artefakte
-- `--output <path>`: Bestimmt das Ausgabeverzeichnis
+### Manueller Build
+
+Falls du mehr Kontrolle brauchst:
+
+```bash
+# 1. Abhängigkeiten
+pip install -r requirements.txt
+
+# 2. PyInstaller
+pip install pyinstaller
+
+# 3. Build mit Spec-File
+pyinstaller safeguard.spec
+
+# Fertig! Deine ausführbare Datei ist in: dist/SafeGuard (oder dist/SafeGuard.exe auf Windows)
+```
+
+### Build-Optionen (Advanced)
+
+Falls du das Spec-File anpassen möchtest:
+
+```bash
+# Onefile-Build (eine einzelne EXE statt Bundle)
+pyinstaller --onefile --console --name SafeGuard safeguard/__main__.py
+
+# Mit Icon (Windows)
+pyinstaller safeguard.spec --icon=icon.ico
+```
 
 ---
 
 ## ▶️ Verwendung
+
+### Nach dem Setup (Empfohlen)
+
+Die ausführbare Datei nutzen (kein Python nötig!):
+
+**Windows:**
+```bash
+dist/SafeGuard.exe --help
+dist/SafeGuard.exe --scan "C:\Users\YourName\Documents"
+```
+
+**Linux/Mac:**
+```bash
+./dist/SafeGuard --help
+./dist/SafeGuard --scan ~/Documents
+```
+
+### Direktes Python-Skript
+
+Falls du das Script direkt ausführen möchtest:
 
 ```bash
 # SafeGuard starten
