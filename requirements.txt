@@ -1,0 +1,21 @@
+# SafeGuard Dependencies
+# Python 3.8+
+
+# CLI & Utilities
+click==8.1.7
+colorama==0.4.6
+
+# File & System Operations
+watchdog==3.0.0
+psutil==5.9.8
+
+# Scanning & Analysis
+pycryptodome==3.19.0
+
+# Data Processing
+pyyaml==6.0.1
+
+# Development (Optional)
+pytest==7.4.3
+black==23.12.1
+pylint==3.0.3
